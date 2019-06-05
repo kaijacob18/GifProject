@@ -1,6 +1,6 @@
 $(function(){
-    populateButtons(topics, "SearchButton", "#additional-sports-idol");
-    console.log("Working");
+    populateButtons(topics, "searchButton", "#additional-sports-idol");
+console.log("Working")
 
 })
 var topics = ["michael jordan", "walter payton", "julius erving"];
@@ -16,3 +16,13 @@ function populateButtons(topics,rating,areaToAddTo){
 
     }
 }
+$(document).on("click",".searchButton",function(){
+var idols = $(this).data("idols");
+var queryURL = "https://api.giphy.com/v1/gifs/search?q="+idols+ "&api_key=g6NbwOl7scqP1LzfluZ9fvkBoJbb9wS2&limit=10";
+$.ajax({
+    url:queryURL,
+    method:"GET"})
+    .done(function(response){
+        console.log(response);
+    })
+})
